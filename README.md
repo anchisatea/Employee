@@ -4,20 +4,21 @@ Goal is to create a simple Spring Boot application with REST API services provid
 
 Java 8 or newer and Spring Boot must be used.
 
-Feel free to use Maven or Gradle with any libraries, if and as needed.
 
 ## Requirements
 
-1. Scaffold the project with data source connection (any database but in memory one is preferred).
-1. Create API for authentication, check User existing and return generated token (Use this token to secure APIs on point 3-6).
+1. Scaffold the project with data source connection (any database).
 1. Create API for retrieving all employee.
 1. Create API for retrieving one employee by ID.
 1. Create API for saving one employee.
 1. Create API for modifying one employee.
 1. Create API for deleting one employee by ID.
 1. Unit testing.
-1. Swagger is a plus.
-1. MapStruct is a plus.
+1. Maven
+1. Swagger
+1. MapStruct
+1. Docker (Optional)
+1. Create API for authentication, check User existing and return generated token (Use this token to secure APIs on point 3-6). (Optional)
 
 ## Important note
 A high attention to the quality of the application will be paid: project structure, clean code, best practices, comments, ...
