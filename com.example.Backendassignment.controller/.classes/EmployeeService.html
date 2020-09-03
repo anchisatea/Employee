@@ -1,0 +1,132 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: EmployeeService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.example.Backendassignment.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: EmployeeService (com.example.Backendassignment.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.2%
+  </span>
+  <span class="absValue">
+    (15/ 17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.example.Backendassignment.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.example.Backendassignment.exception.EmployeeNotFoundException;
+<i>4</i>&nbsp;import com.example.Backendassignment.model.Employee;
+<i>5</i>&nbsp;import com.example.Backendassignment.repository.EmployeeRepository;
+<i>6</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>7</i>&nbsp;import org.springframework.dao.EmptyResultDataAccessException;
+<i>8</i>&nbsp;import org.springframework.stereotype.Service;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.util.List;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;@Service
+<b class="fc"><i>13</i>&nbsp;public class EmployeeService {</b>
+<i>14</i>&nbsp;    @Autowired
+<i>15</i>&nbsp;    private EmployeeRepository employeeRepository;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public List&lt;Employee&gt; findAllEmployees() {
+<b class="fc"><i>18</i>&nbsp;        return employeeRepository.findAll();</b>
+<i>19</i>&nbsp;    }
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public Employee getEmployeesById(Long id) {
+<b class="fc"><i>22</i>&nbsp;        return employeeRepository.findById(new Long(id)).orElseThrow(() -&gt; new EmployeeNotFoundException());</b>
+<i>23</i>&nbsp;    }
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    public Employee saveEmployees(Employee employee){
+<b class="fc"><i>26</i>&nbsp;        return employeeRepository.save(employee);</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public void deleteEmployeesById(Long id) {
+<i>30</i>&nbsp;        try {
+<b class="fc"><i>31</i>&nbsp;            employeeRepository.deleteById(id);</b>
+<b class="nc"><i>32</i>&nbsp;        } catch (EmptyResultDataAccessException e) {</b>
+<b class="nc"><i>33</i>&nbsp;            throw new EmployeeNotFoundException();</b>
+<b class="fc"><i>34</i>&nbsp;        }</b>
+<b class="fc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public Employee modifyEmployeesById(Long id, Employee employeeDetails){
+<b class="fc"><i>38</i>&nbsp;        Employee employee = employeeRepository.findById(id).orElseThrow(() -&gt; new EmployeeNotFoundException());</b>
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;        employee.setFirstname(employeeDetails.getFirstname());</b>
+<b class="fc"><i>41</i>&nbsp;        employee.setLastname((employeeDetails.getLastname()));</b>
+<b class="fc"><i>42</i>&nbsp;        employee.setPosition((employeeDetails.getPosition()));</b>
+<b class="fc"><i>43</i>&nbsp;        employee.setEmail((employeeDetails.getEmail()));</b>
+<b class="fc"><i>44</i>&nbsp;        employee.setPhone((employeeDetails.getPhone()));</b>
+<b class="fc"><i>45</i>&nbsp;        employeeRepository.save(employee);</b>
+<b class="fc"><i>46</i>&nbsp;        return employee;</b>
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-09-02 10:10</div>
+</div>
+</body>
+</html>
